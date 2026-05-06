@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+// In production (Vercel) the API is on the same origin — no baseURL needed.
+// In local dev, point to the Express server via VITE_API_URL.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
+  baseURL: import.meta.env.VITE_API_URL || '',
 });
 
 export const getRelations = () => api.get('/api/strapi/relations').then(r => r.data);
